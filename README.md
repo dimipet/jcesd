@@ -1,8 +1,11 @@
 # jcesd
-Simple CES-D (Center for Epidemiologic Studies Depression Scale CES-D) screen test
+Simple Java CES-D (Center for Epidemiologic Studies Depression Scale CES-D) screen test
 
 ## Information
 The Center for Epidemiologic Studies Depression Scale (CES-D) is one of the most common screening tests for helping an individual to determine his or her depression quotient [1]. This simple Java 7 - Netbeans 7.0, Swing app was part of the _"Research Methodologies in Neuroscience"_ of _"Advanced Computing and Communication Systems - Intelligent Systems"_ MSc programm ran by Aristotle University Thessaloniki - Dept. Electrical & Computer Engineering. This app scientific guidance, translation and (scale) standardization was held by Konstantinos N. Fountoulakis, MD, Professor of Psychiatry (Aristotle University of Thessaloniki, AHEPA University Hospital Thessaloniki, Greece) [2].  
+
+## Exceptions
+App was developed in 2010, as such technology stack is deprecated. 
 
 ## Purpose
 This app's main objective was to collect and save questionnaire data from subjects. The research's outcomes are presented here [3] 
