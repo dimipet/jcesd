@@ -20,7 +20,8 @@ public class ExcelController {
 
     public ExcelController() {
         try {
-            this.fileIn = new FileInputStream("resources/workbook.xls");
+            //TODO add app.properties
+            this.fileIn = new FileInputStream("results.xls");
             this.wb = WorkbookFactory.create(fileIn);
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +60,8 @@ public class ExcelController {
 
     public void writeToFile() {
         try {
-            fileOut = new FileOutputStream("resources/workbook.xls");
+            //TODO add app.properties
+            fileOut = new FileOutputStream("results.xls");
             wb.write(fileOut);
             fileOut.close();
         } catch (Exception e) {
