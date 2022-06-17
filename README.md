@@ -6,6 +6,7 @@ The Center for Epidemiologic Studies Depression Scale (CES-D) is one of the most
 
 ## Exceptions
 App was developed in 2010, as such technology stack is deprecated. 
+Have a look at jcesd2 https://github.com/dimipet/jcesd2 
 
 ## Purpose
 This app's main objective was to collect and save questionnaire data from subjects. The research's outcomes are presented here [3] 
