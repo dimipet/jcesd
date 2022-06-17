@@ -19,13 +19,6 @@
     <fileset dir="${lib.dir}" includes="**/*.jar" />
 </path>
 
-<!--
-<path id="resource.dependencies">
-    <fileset dir="${src.dir}" includes="com/dimipet/jcesd/resources/*.*" />
-	<fileset dir="${src.dir}" includes="com/dimipet/jcesd/resources/busyicons/*.*" />
-</path>
--->
-
 <pathconvert property="manifest.classpath" pathsep=" ">
 	<path refid="classpath.dependencies"/>
 		<mapper>
@@ -36,11 +29,6 @@
 		</mapper>
 </pathconvert>
 
- <!--
-<target name="init">
-    <target name="main" depends="clean, compile, dist" />
-</target>
--->
 
 <target name="clean" description="clean">
 	<property location="${build.dir}/built-clean.properties" name="built-clean.properties"/>
@@ -55,7 +43,6 @@
 	
 	<javac includeantruntime="false" source="1.7" classpathref="classpath.dependencies" 
 		srcdir="${src.dir}" destdir="${build.dir}" encoding="UTF-8">
-
 	</javac>
 	
 	<copy file="results.xls" todir="${build.dir}"/>
@@ -84,7 +71,6 @@
     </jar>
 </target>
 
-<!-- -->
 <target description="run main class." name="run" depends="dist">
 	<java dir="${exec.dir}"
 		jar="${dist.dir}/${projectName}.jar"
