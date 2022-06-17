@@ -27,6 +27,9 @@ Netbeans' ant scripts will use build.xml and ./nbproject folder
 2. File -> Open Project -> /the/path/you/checked/out/git/sources/ -> choose jcesd -> Open Project
 3. Run -> choose main class -> com.dimipet.jcesd.JCESDApp 
 
+## Results
+You can consult the results for further analysis in results.xls
+
 # References
 1. http://counsellingresource.com/quizzes/cesd/index.html, access 04-12-2010
 2. https://www.med.auth.gr/en/users/fountoul, access 04-12-2020 
