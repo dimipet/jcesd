@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jcesd" default="default" basedir=".">
+<description>Simple CES-D screen test</description>
+
+<property name="projectName" value="jcesd" />
+<property name="project.package" value="com.dimipet.jcesd" />
+<property name="package.dir" value="com/dimipet/jcesd" /> 
+<property name="src.dir" location="src" />
+<property name="test.dir" location="test" />
+<property name="lib.dir" location="lib" />
+<property name="build.dir" location="build" />
+<property name="resources.dir" location="resources" />
+<property name="dist.dir" location="dist" />
+<property name="exec.dir" location="dist" />
+
+
+<path id="classpath.dependencies">
+    <fileset dir="${lib.dir}" includes="**/*.jar" />
+</path>
+
+<!--
+<path id="resource.dependencies">
+    <fileset dir="${src.dir}" includes="com/dimipet/jcesd/resources/*.*" />
+	<fileset dir="${src.dir}" includes="com/dimipet/jcesd/resources/busyicons/*.*" />
+</path>
+-->
+
+<pathconvert property="manifest.classpath" pathsep=" ">
+	<path refid="classpath.dependencies"/>
+		<mapper>
+			<chainedmapper>
+			<flattenmapper/>
+				<globmapper from="*.jar" to="lib/*.jar"/>
+			</chainedmapper>
+		</mapper>
+</pathconvert>
+
+ <!--
+<target name="init">
+    <target name="main" depends="clean, compile, dist" />
+</target>
+-->
+
+<target name="clean" description="clean">
+	<property location="${build.dir}/built-clean.properties" name="built-clean.properties"/>
+	<delete file="${built-clean.properties}" quiet="true"/>
+    <delete dir="${build.dir}"/>
+	<delete dir="${dist.dir}"/>
+</target>
+
+<target name="compile" description="compile" depends="clean">
+	
+	<mkdir dir="${build.dir}"/>
+	
+	<javac includeantruntime="false" source="1.7" classpathref="classpath.dependencies" 
+		srcdir="${src.dir}" destdir="${build.dir}" encoding="UTF-8">
+
+	</javac>
+	
+	<copy file="results.xls" todir="${build.dir}"/>
+	
+	<mkdir dir="${build.dir}/com/dimipet/jcesd/resources"/>
+	<copy todir="${build.dir}/com/dimipet/jcesd/resources">
+		<fileset dir="src/com/dimipet/jcesd/resources"/>
+	</copy>
+	
+</target>
+
+<target name="dist" description="package to jar" depends="compile">
+    <mkdir dir="${dist.dir}" />
+	
+	<copy todir="${dist.dir}/lib" flatten="true">
+		<path refid="classpath.dependencies"/>
+	</copy>
+
+	<copy file="results.xls" todir="${dist.dir}"/>
+
+	<jar jarfile="${dist.dir}/${projectName}.jar" basedir="${build.dir}" >	
+        <manifest>
+            <attribute name="Main-Class" value="com.dimipet.jcesd.JCESDApp" />
+			<attribute name="Class-Path" value="${manifest.classpath}"/>
+        </manifest>
+    </jar>
+</target>
+
+<!-- -->
+<target description="run main class." name="run" depends="dist">
+	<java dir="${exec.dir}"
+		jar="${dist.dir}/${projectName}.jar"
+		fork="true"
+		failonerror="true"
+		maxmemory="128m">
+	<arg value="-h"/>
+	<classpath>
+		<path id="classpath.dependencies">
+			<fileset dir="${dist.dir}/lib" includes="**/*.jar" />
+		</path>
+	</classpath>
+	</java>
+</target>
+</project>
